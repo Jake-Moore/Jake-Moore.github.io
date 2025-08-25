@@ -276,10 +276,10 @@
 
         // Toggle theme function
         function toggleTheme() {
-            const currentTheme = body.getAttribute('data-theme');
+            const currentTheme = document.documentElement.getAttribute('data-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
             
-            body.setAttribute('data-theme', newTheme);
+            document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
             updateToggleIcon(newTheme);
         }
