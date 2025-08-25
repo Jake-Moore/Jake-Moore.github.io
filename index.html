@@ -211,6 +211,13 @@
             transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
     </style>
+    <script>
+        // Apply saved theme immediately to prevent flash
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
 </head>
 <body>
     <div class="container">
@@ -250,9 +257,8 @@
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
 
-        // Check for saved theme preference or default to dark mode
-        const currentTheme = localStorage.getItem('theme') || 'dark';
-        body.setAttribute('data-theme', currentTheme);
+        // Get the theme that was already applied in the head
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
         
         // Update toggle button icon based on current theme
         function updateToggleIcon(theme) {
